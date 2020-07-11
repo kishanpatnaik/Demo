@@ -26,7 +26,7 @@ public class OrderController {
 		return null;
 		
 	}
-	
+	@RequestMapping("/order")
 	public Cart orderFood(@RequestParam("restaurantId") int restaurantId, @RequestParam("foodId") int foodId,  @RequestParam("locationId") long locationId,@RequestParam("user") String userName ){
 		
 		if(locationId<=0|| !userName.isEmpty() || foodId<=0 || restaurantId <=0){
@@ -35,18 +35,18 @@ public class OrderController {
 		return os.orderFood(restaurantId, foodId, locationId, userName);
 		
 	}
-	
+	@RequestMapping("/updateOrder")
 	public Cart modifyOrder(@RequestParam("cartId")int CartId,@RequestParam("order")Order order, @RequestParam("user")String user){
 		Cart cart = os.viewCart(user);
 		return os.modifyOrder(cart, order);
 		
 	}
-	
+	@RequestMapping("/clearCart")
 	public boolean emptyCart(@RequestParam("user")String user){
 		return os.emptyCart(user);
 		
 	}
-	
+	@RequestMapping("/openCart")
 	public Cart viewCart(@RequestParam("user")String user){
 		return os.viewCart(user);
 		
